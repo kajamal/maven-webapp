@@ -1,0 +1,12 @@
+---
+- hosts: webservers
+  remote_user: ubuntu
+  become: yes
+  tasks:
+- name: Pull an image
+  community.docker.docker_image:
+    name: learnitguide/busapp:latest
+    source: pull
+    # Select platform for pulling. If not specified, will pull whatever docker prefers.
+    pull:
+      platform: amd64
